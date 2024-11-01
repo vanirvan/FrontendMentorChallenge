@@ -1,0 +1,28 @@
+---
+import DifficultyTag from "~/components/difficulty-tag.astro";
+import ProjectCard from "~/components/project-card.astro";
+
+import type { Project } from "~/data/project";
+
+interface Props {
+  level: 1 | 2 | 3 | 4 | 5;
+  data: Project[];
+}
+
+const { level, data } = Astro.props;
+---
+
+<section id="newbie" class="relative w-full">
+  <div class="w-full max-w-7xl mx-auto gap-6 flex flex-col px-6">
+    <DifficultyTag level={level} />
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      {
+        data
+          .sort((a, b) => a.finish_timestamp - b.finish_timestamp)
+          .map((d) => (
+            <ProjectCard url={d.url} image={d.image} title={d.name} />
+          ))
+      }
+    </div>
+  </div>
+</section>
