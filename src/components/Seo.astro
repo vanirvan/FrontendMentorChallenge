@@ -1,10 +1,45 @@
 ---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  url?: string;
+}
+
 import { SEO } from "astro-seo";
+
+const {
+  title = "Frontend Mentor Challenge",
+  description = "List of Challenge in frontendmentor.io that i've completed.",
+  image = "/assets/frontendmentor-logo.png",
+  url = "https://fmc.vanirvan.my.id",
+} = Astro.props;
 ---
 
 <SEO
-  title="Frontend Mentor Challenge | Vanirvan"
-  description="List of Challenge in frontendmentor.io that i've completed."
+  charset="UTF-8"
+  title={`${title} | Vanirvan`}
+  description={`${description}`}
+  canonical={"fmc.vanirvan.my.id"}
+  noindex={false}
+  nofollow={false}
+  openGraph={{
+    basic: {
+      title,
+      type: "website",
+      image,
+      url,
+    },
+  }}
+  twitter={{
+    card: "summary_large_image",
+    site: url,
+    creator: "Vanirvan",
+    title,
+    image: `${url}${image}`,
+    imageAlt: title,
+    description,
+  }}
   extend={{
     link: [
       // favicon start
