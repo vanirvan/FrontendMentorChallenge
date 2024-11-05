@@ -9,7 +9,7 @@ interface Props {
 import { SEO } from "astro-seo";
 
 const {
-  title = "Frontend Mentor Challenge",
+  title,
   description = "List of Challenge in frontendmentor.io that i've completed.",
   image = "/assets/frontendmentor-logo.png",
   url = "https://fmc.vanirvan.my.id",
@@ -18,25 +18,27 @@ const {
 
 <SEO
   charset="UTF-8"
-  title={`${title} | Vanirvan`}
-  description={`${description}`}
-  canonical={"fmc.vanirvan.my.id"}
+  title={title
+    ? `${title} | Frontend Mentor Challenge`
+    : "Frontend Mentor Challenge"}
+  description={description}
+  canonical={`https://fmc.vanirvan.my.id${url}`}
   noindex={false}
   nofollow={false}
   openGraph={{
     basic: {
-      title,
+      title: title ? title : "Frontend Mentor Challenge",
       type: "website",
-      image,
-      url,
+      image: `https://fmc.vanirvan.my.id${image}`,
+      url: `https://fmc.vanirvan.my.id${url}`,
     },
   }}
   twitter={{
     card: "summary_large_image",
-    site: url,
+    site: `https://fmc.vanirvan.my.id${url}`,
     creator: "Vanirvan",
-    title,
-    image: `${url}${image}`,
+    title: title ? title : "Frontend Mentor Challenge",
+    image: `https://fmc.vanirvan.my.id${image}`,
     imageAlt: title,
     description,
   }}
