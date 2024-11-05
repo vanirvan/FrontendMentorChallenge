@@ -1,0 +1,26 @@
+---
+import Seo from "~/components/Seo.astro";
+
+interface Props {
+  title?: string;
+  image?: string;
+  url?: string;
+}
+
+const { title, image, url } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <Seo
+      title={title}
+      description={`${title} | Frontend Mentor Challenge`}
+      image={image}
+      url={url}
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
