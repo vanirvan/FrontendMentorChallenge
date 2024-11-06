@@ -1,0 +1,15 @@
+---
+import ProjectLayout from "~/components/layouts/ProjectLayout.astro";
+
+import IndexPage from "./page";
+
+const projectDir = "/challenge/mortgage-repayment-calculator";
+---
+
+<ProjectLayout
+  title="Mortgage Repayment Calculator"
+  image={projectDir + "/cover.png"}
+  url={projectDir}
+>
+  <IndexPage client:load />
+</ProjectLayout>
