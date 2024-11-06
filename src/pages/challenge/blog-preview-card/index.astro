@@ -1,0 +1,96 @@
+---
+import ProjectLayout from "~/components/layouts/ProjectLayout.astro";
+
+// images
+import IMG_CardImage from "../../../assets/challenge/blog-preview-card/card-img.png";
+import IMG_UserPic from "~/assets/challenge/blog-preview-card/userpic.png";
+
+const projectDir = "/challenge/blog-preview-card";
+---
+
+<ProjectLayout
+  title="Blog Preview Card"
+  image={projectDir + "/cover.png"}
+  url={projectDir}
+>
+  <main
+    class="bg-project-yellow font-figtree relative flex h-full max-h-svh min-h-svh w-full flex-col items-center justify-center overflow-hidden p-6"
+  >
+    <div
+      id="card"
+      class="card-shadow flex h-auto w-full max-w-96 flex-col gap-6 rounded-[20px] border bg-white p-6"
+    >
+      <img
+        id="card-img"
+        src={IMG_CardImage.src}
+        alt="blog preview"
+        class="bg-project-yellow h-auto w-full rounded-[10px]"
+      />
+      <div id="content" class="flex flex-col gap-3">
+        <div
+          id="category"
+          class="bg-project-yellow w-max rounded-[4px] px-3 py-1"
+        >
+          <span class="text-project-black text-sm font-bold">Learning</span>
+        </div>
+        <span class="text-project-black text-sm">Published 21 Dec 2023</span>
+        <span
+          class="text-project-black hover:text-project-yellow text-2xl font-extrabold transition-colors duration-200 hover:cursor-pointer"
+          >HTML & CSS foundations</span
+        >
+        <span class="text-project-shade font-medium"
+          >These languages are the backbone of every website, defining
+          structure, content, and presentation.</span
+        >
+      </div>
+      <div id="author" class="flex items-center gap-3">
+        <img
+          src={IMG_UserPic.src}
+          alt="user pic"
+          class="h-8 w-8 rounded-full"
+        />
+        <span class="text-project-black text-sm font-extrabold"
+          >Greg Hooper</span
+        >
+      </div>
+    </div>
+  </main>
+</ProjectLayout>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
+
+  :root {
+    --yellow: #f4d04e;
+    --black: #111111;
+    --shade: #6b6b6b;
+  }
+
+  .card-shadow {
+    box-shadow: 8px 8px black;
+  }
+
+  .font-figtree {
+    font-family: "Figtree", sans-serif;
+  }
+
+  .bg-project-yellow {
+    background-color: var(--yellow);
+  }
+
+  .hover\:\text-project-yellow:hover {
+    color: var(--yellow);
+  }
+
+  .text-project-black {
+    color: var(--black);
+  }
+
+  .text-project-shade {
+    color: var(--shade);
+  }
+
+  .border-project-black {
+    border-color: var(--black);
+  }
+</style>
