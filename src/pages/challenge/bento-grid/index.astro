@@ -1,0 +1,183 @@
+---
+import ProjectLayout from "~/components/layouts/ProjectLayout.astro";
+
+// images
+import IMG_AIContent from "~/assets/challenge/bento-grid/illustration-ai-content.webp";
+import IMG_AudienceGrowth from "~/assets/challenge/bento-grid/illustration-audience-growth.webp";
+import IMG_ConsistentSchedule from "~/assets/challenge/bento-grid/illustration-consistent-schedule.webp";
+import IMG_CreatePost from "~/assets/challenge/bento-grid/illustration-create-post.webp";
+import IMG_FiveStars from "~/assets/challenge/bento-grid/illustration-five-stars.webp";
+import IMG_GrowFollowers from "~/assets/challenge/bento-grid/illustration-grow-followers.webp";
+import IMG_MultiplePlatforms from "~/assets/challenge/bento-grid/illustration-multiple-platforms.webp";
+import IMG_SchedulePosts from "~/assets/challenge/bento-grid/illustration-schedule-posts.webp";
+import { Image } from "astro:assets";
+
+const projectDir = "/challenge/bento-grid";
+---
+
+<ProjectLayout
+  title="Bento Grid"
+  image={projectDir + "/cover.png"}
+  url={projectDir}
+>
+  <main class="font-dm-sans relative min-h-svh w-full bg-neutral-200">
+    <section
+      id="bento-grid"
+      class="relative mx-auto grid w-full max-w-5xl grid-cols-1 gap-6 p-4 sm:grid-cols-2 lg:auto-rows-auto lg:grid-cols-4 lg:gap-5"
+    >
+      <div
+        class="overflow-hidden rounded-xl bg-[#7650dc] p-9 text-center text-white shadow-sm"
+      >
+        <h1 class="mb-6 text-5xl">
+          Social Media <span class="text-[#ffcb6b]">10x</span>
+          <span class="italic">Faster</span> with AI
+        </h1>
+        <Image
+          src={IMG_FiveStars}
+          alt="illustration-five-stars"
+          class="mx-auto mb-2 w-36 lg:w-40"
+        />
+        <span class="text-lg">Over 4000 5-stars review</span>
+      </div>
+      <div class="overflow-hidden rounded-xl bg-white p-6 shadow-sm">
+        <Image
+          src={IMG_MultiplePlatforms}
+          alt="illustration-multiple-platforms"
+          class="mb-4 lg:w-72 lg:max-w-[200%]"
+        />
+        <h2 class="text-2xl font-semibold text-[#121212]">
+          Manage multiple accounts and platforms.
+        </h2>
+      </div>
+      <div
+        class="overflow-hidden rounded-xl bg-[#ffcb6b] p-6 text-left shadow-sm"
+      >
+        <h2 class="mb-4 text-2xl font-semibold text-[#121212]">
+          Maintain a consistent posting schedule.
+        </h2>
+        <Image
+          src={IMG_ConsistentSchedule}
+          alt="illustration-consistent-schedule"
+          class="relative top-12 -mt-12 w-3/4 lg:top-[100px] lg:-mt-[100px] lg:w-full"
+        />
+      </div>
+      <div
+        class="overflow-hidden rounded-xl bg-[#dacffc] p-6 text-center text-black lg:text-left"
+      >
+        <h2 class="text-3xl font-medium">Schedule to social media.</h2>
+        <Image
+          src={IMG_SchedulePosts}
+          alt="illustration-schedule-posts"
+          class="my-5 lg:w-80 lg:max-w-[200%]"
+        />
+        <span class="text-lg leading-[1px]">
+          Optimize post timing to publish content at perfect time for your
+          audience.
+        </span>
+      </div>
+      <div
+        class="overflow-hidden rounded-xl bg-[#7650dc] p-6 text-center text-white shadow-sm lg:text-left"
+      >
+        <div
+          class="mx-auto grid w-3/4 grid-cols-1 gap-6 lg:w-full lg:grid-cols-2 lg:gap-5 lg:place-self-center"
+        >
+          <Image
+            src={IMG_GrowFollowers}
+            alt="illustration-grow-followers"
+            class="lg:w-full lg:place-self-center"
+          />
+
+          <h2 class="text-3xl font-medium lg:w-full lg:place-self-center">
+            Grow followers with non-stop contents.
+          </h2>
+        </div>
+      </div>
+      <div class="overflow-hidden rounded-xl bg-white p-6 text-black shadow-sm">
+        <h2 class="mb-4 text-3xl font-medium lg:text-4xl">>56%</h2>
+        <p class="mb-4 text-lg leading-none">faster audience growth</p>
+        <Image
+          src={IMG_AudienceGrowth}
+          alt="illustration-audience-growth"
+          class="w-3/5 lg:w-full"
+        />
+      </div>
+      <div class="overflow-hidden rounded-xl bg-[#f9eee1] p-6 shadow-sm">
+        <h2 class="mb-4 text-3xl font-medium text-black lg:mt-10">
+          Create and schedule content <span class="italic text-[#7650dc]"
+            >quicker.</span
+          >
+        </h2>
+        <Image
+          src={IMG_CreatePost}
+          alt="illustration-create-post"
+          class="w-3/5 lg:w-full"
+        />
+      </div>
+      <div
+        class="overflow-hidden rounded-xl bg-[#ffcb6b] p-6 pr-3 shadow-sm lg:flex lg:flex-col lg:justify-between"
+      >
+        <h2 class="mb-4 text-3xl font-medium text-black">
+          Write your content using AI.
+        </h2>
+        <Image
+          src={IMG_AIContent}
+          alt="illustration-ai-content"
+          class="w-3/4 lg:w-full"
+        />
+      </div>
+    </section>
+  </main>
+</ProjectLayout>
+
+<style>
+  /* Font: DM Sans */
+  @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+  .font-dm-sans {
+    font-family: "DM Sans", sans-serif;
+  }
+
+  /* apply grid areas only to lg: width */
+  @media screen and (width >= 1024px) {
+    /* grid template areas */
+    /* assigning areas name to each section item */
+    /* should be assigned at >= 1024px, bellow that, layout scrambled */
+    #bento-grid > div:nth-child(1) {
+      grid-area: social;
+    }
+    #bento-grid > div:nth-child(2) {
+      grid-area: manage;
+    }
+    #bento-grid > div:nth-child(3) {
+      grid-area: mantain;
+    }
+    #bento-grid > div:nth-child(4) {
+      grid-area: schedule;
+    }
+    #bento-grid > div:nth-child(5) {
+      grid-area: grow;
+    }
+    #bento-grid > div:nth-child(6) {
+      grid-area: faster;
+    }
+    #bento-grid > div:nth-child(7) {
+      grid-area: create;
+    }
+    #bento-grid > div:nth-child(8) {
+      grid-area: write;
+    }
+
+    #bento-grid {
+      grid-template-areas:
+        "create social social schedule"
+        "create social social schedule"
+        "create social social schedule"
+        "create manage mantain schedule"
+        "write manage mantain schedule"
+        "write manage mantain schedule"
+        "write faster grow grow"
+        "write faster grow grow"
+        "write faster grow grow";
+    }
+  }
+</style>
