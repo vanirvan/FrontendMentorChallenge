@@ -1,0 +1,46 @@
+---
+import ProjectLayout from "~/components/layouts/ProjectLayout.astro";
+
+// images
+import { Image } from "astro:assets";
+import IMG_QRCode from "~/assets/challenge/qr-code-component/image-qr-code.png";
+
+const projectDir = "/challenge/qr-code-component";
+---
+
+<ProjectLayout
+  title="QR Code Component"
+  image={projectDir + "/cover.png"}
+  url={projectDir}
+>
+  <main
+    class="font-outfit relative bg-[#d5e1ef] min-h-svh max-h-svh flex flex-col items-center justify-center p-6"
+  >
+    <div
+      id="card"
+      class="bg-white rounded-2xl p-4 flex flex-col gap-4 items-center max-w-80 text-center"
+    >
+      <Image
+        src={IMG_QRCode}
+        alt={"QR Code"}
+        class="rounded-xl aspect-square"
+      />
+      <div class="flex flex-col gap-4 px-3">
+        <h1 class="font-bold text-xl">
+          Improve your front-end skills by building projects
+        </h1>
+        <h2 class="font-light text-sm text-gray-500 px-3">
+          Scan the QR code to visit Frontend Mentor and take your coding skills
+          to the next level
+        </h2>
+      </div>
+    </div>
+  </main>
+</ProjectLayout>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+
+  .font-outfit {
+    font-family: "Outfit", serif;
+  }
+</style>
