@@ -1,24 +1,32 @@
 ---
-interface Props {
-  url: string;
-  image: string;
-  title: string;
-}
+import { Image } from "astro:assets";
 
-const { url, image, title } = Astro.props;
+import type { Project } from "~/data/project";
+
+interface Props extends Project {}
+
+const { name, image, project_url, frontendmentor_url } = Astro.props;
 ---
 
-<div class="card w-full max-w-96 shadow-xl bg-base-100 group">
-  <figure class="overflow-hidden">
-    <a href={url}>
-      <img
-        src={image}
-        alt={`image of ${title}`}
-        class="aspect-[4/3] object-cover group-hover:scale-125 transition duration-300"
-      />
-    </a>
-  </figure>
+<div class="card w-full max-w-96 shadow-xl bg-base-100 group overflow-hidden">
+  <div class="relative overflow-hidden">
+    <img
+      src={`/challenge${project_url}${image}`}
+      alt={name}
+      class="aspect-[4/3] object-cover group-hover:scale-110 transition duration-300"
+    />
+  </div>
   <div class="card-body">
-    <a href={url} class="font-medium text-2xl group-hover:underline">{title}</a>
+    <h1 class="font-medium text-2xl group-hover:underline">{name}</h1>
+    <div class="flex gap-3 mt-6">
+      <a
+        href={`/challenge${project_url}`}
+        target="_blank"
+        class="btn btn-primary">Preview Site</a
+      >
+      <a href={frontendmentor_url} target="_blank" class="btn btn-secondary"
+        >Visit Challenge</a
+      >
+    </div>
   </div>
 </div>

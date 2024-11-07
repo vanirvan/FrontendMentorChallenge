@@ -41,27 +41,33 @@ const guruProject = projects.filter((p) => p.difficulty === 5);
       </div>
     </section>
 
-    {
-      newbieProject.length > 0 && (
-        <ProjectSection level={1} data={newbieProject} />
-      )
-    }
-    {
-      juniorProject.length > 0 && (
-        <ProjectSection level={2} data={juniorProject} />
-      )
-    }
-    {
-      intermediateProject.length > 0 && (
-        <ProjectSection level={3} data={intermediateProject} />
-      )
-    }
-    {
-      advancedProject.length > 0 && (
-        <ProjectSection level={4} data={advancedProject} />
-      )
-    }
-    {guruProject.length > 0 && <ProjectSection level={5} data={guruProject} />}
+    <section id="projects" class="flex flex-col gap-16 my-6">
+      {
+        newbieProject.length > 0 && (
+          <ProjectSection level={1} data={newbieProject} />
+        )
+      }
+      {
+        juniorProject.length > 0 && (
+          <ProjectSection level={2} data={juniorProject} />
+        )
+      }
+      {
+        intermediateProject.length > 0 && (
+          <ProjectSection level={3} data={intermediateProject} />
+        )
+      }
+      {
+        advancedProject.length > 0 && (
+          <ProjectSection level={4} data={advancedProject} />
+        )
+      }
+      {
+        guruProject.length > 0 && (
+          <ProjectSection level={5} data={guruProject} />
+        )
+      }
+    </section>
 
     <Footer />
   </body>

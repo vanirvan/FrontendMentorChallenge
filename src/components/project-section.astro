@@ -16,13 +16,7 @@ const { level, data } = Astro.props;
   <div class="w-full max-w-7xl mx-auto gap-6 flex flex-col px-6">
     <DifficultyTag level={level} />
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-      {
-        data
-          .sort((a, b) => a.finish_timestamp - b.finish_timestamp)
-          .map((d) => (
-            <ProjectCard url={d.url} image={d.image} title={d.name} />
-          ))
-      }
+      {data.map((d) => <ProjectCard {...d} />)}
     </div>
   </div>
 </section>
