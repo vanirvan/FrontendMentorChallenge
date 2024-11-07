@@ -11,7 +11,7 @@ import { SEO } from "astro-seo";
 const {
   title,
   description = "List of Challenge in frontendmentor.io that i've completed.",
-  image = "/assets/frontendmentor-logo.png",
+  image = "/assets/cover.png",
   url = "",
 } = Astro.props;
 ---
@@ -27,7 +27,9 @@ const {
   nofollow={false}
   openGraph={{
     basic: {
-      title: title ? title : "Frontend Mentor Challenge",
+      title: title
+        ? `${title}  | Frontend Mentor Challenge`
+        : "Frontend Mentor Challenge",
       type: "website",
       image: `https://fmc.vanirvan.my.id${image}`,
       url: `https://fmc.vanirvan.my.id${url}`,
@@ -37,7 +39,9 @@ const {
     card: "summary_large_image",
     site: `https://fmc.vanirvan.my.id${url}`,
     creator: "Vanirvan",
-    title: title ? title : "Frontend Mentor Challenge",
+    title: title
+      ? `${title}  | Frontend Mentor Challenge`
+      : "Frontend Mentor Challenge",
     image: `https://fmc.vanirvan.my.id${image}`,
     imageAlt: title,
     description,
