@@ -49,6 +49,14 @@ const projects: Project[] = [
     image: "/cover.png",
     difficulty: 2,
   },
+  {
+    project_url: "/multistep-form",
+    frontendmentor_url:
+      "https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ",
+    name: "Multi-step Form",
+    image: "/cover.png",
+    difficulty: 4,
+  },
 ];
 
 export default projects;

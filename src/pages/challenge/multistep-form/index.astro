@@ -1,0 +1,16 @@
+---
+import ProjectLayout from "~/components/layouts/ProjectLayout.astro";
+import IndexPage from "./index";
+
+// images
+
+const projectDir = "/challenge/multistep-form";
+---
+
+<ProjectLayout
+  title="Multi-step Form"
+  image={projectDir + "/cover.png"}
+  url={projectDir}
+>
+  <IndexPage client:load />
+</ProjectLayout>
