@@ -1,0 +1,282 @@
+---
+import ProjectLayout from "~/components/layouts/ProjectLayout.astro";
+
+import IconArrow from "~/assets/challenge/ip-address-tracker/icon-arrow.svg";
+import IconMarker from "~/assets/challenge/ip-address-tracker/icon-location.svg";
+
+const projectDir = "/challenge/ip-adress-tracker";
+
+// const initialIPAddress_url = `https://geo.ipify.org/api/v2/country,city?apiKey=${import.meta.env.PUBLIC_GEO_IPFY_API_KEY}`;
+// const getInitialIPAddress = await fetch(initialIPAddress_url).then((response) =>
+//   response.json(),
+// );
+
+// const initialLat = getInitialIPAddress.location.lat;
+// const initialLng = getInitialIPAddress.location.lng;
+
+const initialLat = 51.505;
+const initialLng = -0.09;
+---
+
+<ProjectLayout
+  title="Ip Address Tracker"
+  image={projectDir + "/cover.png"}
+  url={projectDir}
+>
+  <Fragment slot={"header"}>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      is:inline
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""></script>
+  </Fragment>
+
+  <main
+    class="font-rubik relative flex h-full max-h-svh min-h-svh w-full flex-col"
+  >
+    <section
+      id="search-section"
+      class="relative flex flex-none flex-col items-center gap-6 p-6 pb-0"
+    >
+      <h1 class="text-2xl font-medium text-white md:text-3xl">
+        IP Address Tracker
+      </h1>
+      <div
+        id="input-ip-address-parent"
+        class="relative mx-auto flex w-full max-w-lg overflow-clip rounded-xl"
+      >
+        <input
+          id="input-ip-address"
+          type="text"
+          name="ip"
+          placeholder="Search for any IP address or domain"
+          class="w-full flex-1 rounded-l-xl bg-[#ededed] px-6 py-3"
+        />
+        <button
+          id="search-ip-address"
+          class="flex h-12 w-12 items-center justify-center bg-[#121212] transition-colors duration-300 hover:bg-[#484848]"
+        >
+          <img src={IconArrow.src} alt="arrow right" />
+        </button>
+      </div>
+
+      <div
+        id="parent_IPAddressResult"
+        class="relative mx-auto w-full max-w-4xl"
+      >
+        <div
+          id="child_IPAddressResult"
+          class="absolute top-0 z-10 mx-auto flex h-max w-full transform flex-col items-center justify-center gap-4 rounded-xl bg-[#ededed] p-4 shadow-xl md:flex-row md:items-start"
+        >
+          <div class="flex flex-col items-center gap-2 md:items-start">
+            <h1 class="text-xs font-bold text-[#969696]">IP Address</h1>
+            <h2
+              id="value_ipAddress"
+              class="text-center text-xl font-medium text-gray-700 md:text-start md:text-lg"
+            >
+            </h2>
+          </div>
+
+          <div class="my-auto hidden h-10 w-px bg-neutral-300 md:block"></div>
+
+          <div class="flex flex-col items-center gap-2 md:items-start">
+            <h1 class="text-xs font-bold text-[#969696]">Location</h1>
+            <h2
+              id="value_location"
+              class="text-center text-xl font-medium text-gray-700 md:text-start md:text-lg"
+            >
+            </h2>
+          </div>
+
+          <div class="my-auto hidden h-10 w-px bg-neutral-300 md:block"></div>
+
+          <div class="flex flex-col items-center gap-2 md:items-start">
+            <h1 class="text-xs font-bold text-[#969696]">Timezone</h1>
+            <h2
+              id="value_timezone"
+              class="text-center text-xl font-medium text-gray-700 md:text-start md:text-lg"
+            >
+            </h2>
+          </div>
+
+          <div class="my-auto hidden h-10 w-px bg-neutral-300 md:block"></div>
+
+          <div class="flex flex-col items-center gap-2 md:items-start">
+            <h1 class="text-xs font-bold text-[#969696]">ISP</h1>
+            <h2
+              id="value_isp"
+              class="text-center text-xl font-medium text-gray-700 md:text-start md:text-lg"
+            >
+            </h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="map" class="flex-1 w-full z-0"></section>
+  </main>
+</ProjectLayout>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+  .font-rubik {
+    font-family: "Rubik", sans-serif;
+  }
+
+  #search-section {
+    background-image: url("../../../assets/challenge/ip-address-tracker/pattern-bg-mobile.png");
+    object-fit: cover;
+    object-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  @media screen and (min-width: 768px) {
+    #search-section {
+      background-image: url("../../../assets/challenge/ip-address-tracker/pattern-bg-desktop.png");
+    }
+  }
+</style>
+
+<script is:inline define:vars={{ IconMarker }}>
+  // set dynamic ip address card height
+  function updateParentIPAddressResultHeight() {
+    const parent_IPAddressResult = document.getElementById(
+      "parent_IPAddressResult",
+    );
+    const child_IPAddressResult = document.getElementById(
+      "child_IPAddressResult",
+    );
+
+    if (!child_IPAddressResult || !parent_IPAddressResult) return;
+    parent_IPAddressResult.style.height = `${child_IPAddressResult.offsetHeight / 2}px`;
+  }
+
+  window.addEventListener("load", updateParentIPAddressResultHeight);
+  window.addEventListener("resize", updateParentIPAddressResultHeight);
+
+  // leaflet map
+  let lat = 0;
+  let lng = 0;
+  var map = L.map("map").setView([lat, lng], 13);
+
+  L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(map);
+
+  var markerIcon = L.icon({
+    iconUrl: IconMarker.src,
+    iconSize: [35, 45],
+  });
+
+  var marker = L.marker([lat, lng], { icon: markerIcon }).addTo(map);
+
+  function updateMarker(lt, lg) {
+    var latlng = L.latLng(lt, lg);
+    marker.setLatLng(latlng);
+    map.setView(latlng);
+  }
+
+  // get ip address value from input
+  const inputIPAddress = document.getElementById("input-ip-address");
+  const buttonSearchIPAddress = document.getElementById("search-ip-address");
+
+  function validateInputIPAddressOrDomains(input) {
+    const ipv4Pattern =
+      /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+    const ipv6Pattern =
+      /^(([0-9a-fA-F]{1,4}:){7}([0-9a-fA-F]{1,4}|:)|(([0-9a-fA-F]{1,4}:){1,7}:)|(([0-9a-fA-F]{1,4}:){1,6}(:[0-9a-fA-F]{1,4}){1,1})|(([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2})|(([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3})|(([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4})|(([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5})|([0-9a-fA-F]{1,4}:)((:[0-9a-fA-F]{1,4}){1,6})|(::([0-9a-fA-F]{1,4}:){0,5}([0-9a-fA-F]{1,4}|:))|([0-9a-fA-F]{1,4}::([0-9a-fA-F]{1,4}:){0,4}([0-9a-fA-F]{1,4}|:))|([0-9a-fA-F]{1,4}:){1,2}::([0-9a-fA-F]{1,4}:){0,3}([0-9a-fA-F]{1,4}|:))$/;
+    const domainPattern =
+      /^(?!-)[A-Za-z0-9-]{1,63}(?<!-)\.(?!-)(?:[A-Za-z0-9-]{1,63}\.)*[A-Za-z]{2,6}$/;
+
+    if (ipv4Pattern.test(input) || ipv6Pattern.test(input)) {
+      return {
+        type: "ip",
+        value: input,
+      };
+    } else if (domainPattern.test(input)) {
+      return {
+        type: "domain",
+        value: input,
+      };
+    } else {
+      return {
+        type: "error",
+        value: input,
+      };
+    }
+  }
+
+  async function getInputIPAddress() {
+    if (!inputIPAddress) return;
+    const inputValue = inputIPAddress.value;
+
+    const recognizeInputType = validateInputIPAddressOrDomains(inputValue);
+
+    if (recognizeInputType.type === "error") {
+      alert("Input is not IP Address or a Domain");
+    }
+
+    if (recognizeInputType.type === "ip") {
+      const urlWithIPAddress = `https://geo.ipify.org/api/v2/country,city?apiKey=at_E5WXh6XsUoPixXWDUh8HwXA7UTzLN&ipAddress=${recognizeInputType.value}`;
+      const getIPAddress = await fetch(urlWithIPAddress).then((response) =>
+        response.json(),
+      );
+      value_ipAddress.innerHTML = getIPAddress.ip;
+      value_location.innerHTML = `${getIPAddress.location.city}, ${getIPAddress.location.region}${getIPAddress.location.postalCode !== "" ? `, ${getIPAddress.location.postalCode}` : ""}`;
+      value_timezone.innerHTML = `UTC ${getIPAddress.location.timezone}`;
+      value_isp.innerHTML = getIPAddress.isp;
+      updateMarker(getIPAddress.location.lat, getIPAddress.location.lng);
+    }
+
+    if (recognizeInputType.type === "domain") {
+      const urlWithDomains = `https://geo.ipify.org/api/v2/country,city?apiKey=at_E5WXh6XsUoPixXWDUh8HwXA7UTzLN&domain=${recognizeInputType.value}`;
+      const getIPAddress = await fetch(urlWithDomains).then((response) =>
+        response.json(),
+      );
+      value_ipAddress.innerHTML = getIPAddress.ip;
+      value_location.innerHTML = `${getIPAddress.location.city}, ${getIPAddress.location.region}${getIPAddress.location.postalCode !== "" ? `, ${getIPAddress.location.postalCode}` : ""}`;
+      value_timezone.innerHTML = `UTC ${getIPAddress.location.timezone}`;
+      value_isp.innerHTML = getIPAddress.isp;
+      updateMarker(getIPAddress.location.lat, getIPAddress.location.lng);
+    }
+  }
+
+  inputIPAddress?.addEventListener("keypress", async (event) => {
+    if (event.key === "Enter") {
+      await getInputIPAddress();
+    }
+  });
+
+  buttonSearchIPAddress?.addEventListener(
+    "click",
+    async (event) => await getInputIPAddress(),
+  );
+
+  // set default ip address value
+  const value_ipAddress = document.getElementById("value_ipAddress");
+  const value_location = document.getElementById("value_location");
+  const value_timezone = document.getElementById("value_timezone");
+  const value_isp = document.getElementById("value_isp");
+
+  async function initializeIpAddress() {
+    const initialUrl = `https://geo.ipify.org/api/v2/country,city?apiKey=at_E5WXh6XsUoPixXWDUh8HwXA7UTzLN`;
+    const data = await fetch(initialUrl).then((response) => response.json());
+
+    value_ipAddress.innerHTML = data.ip;
+    value_location.innerHTML = `${data.location.city}, ${data.location.region}${data.location.postalCode !== "" ? `, ${data.location.postalCode}` : ""}`;
+    value_timezone.innerHTML = `UTC ${data.location.timezone}`;
+    value_isp.innerHTML = data.isp;
+
+    updateMarker(data.location.lat, data.location.lng);
+  }
+
+  window.addEventListener("load", async () => {
+    await initializeIpAddress();
+  });
+</script>
