@@ -57,6 +57,14 @@ const projects: Project[] = [
     image: "/cover.png",
     difficulty: 4,
   },
+  {
+    project_url: "/ip-address-tracker",
+    frontendmentor_url:
+      "https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0",
+    name: "IP Address Tracker",
+    image: "/cover.png",
+    difficulty: 3,
+  },
 ];
 
 export default projects;
