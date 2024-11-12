@@ -19,6 +19,7 @@ const { title, image, url } = Astro.props;
       image={image}
       url={url}
     />
+    <slot name="header" />
   </head>
   <body>
     <slot />
