@@ -159,7 +159,6 @@ const initialLng = -0.09;
     parent_IPAddressResult.style.height = `${child_IPAddressResult.offsetHeight / 2}px`;
   }
 
-  window.addEventListener("load", updateParentIPAddressResultHeight);
   window.addEventListener("resize", updateParentIPAddressResultHeight);
 
   // leaflet map
@@ -227,11 +226,9 @@ const initialLng = -0.09;
       const getIPAddress = await fetch(urlWithIPAddress).then((response) =>
         response.json(),
       );
-      value_ipAddress.innerHTML = getIPAddress.ip;
-      value_location.innerHTML = `${getIPAddress.location.city}, ${getIPAddress.location.region}${getIPAddress.location.postalCode !== "" ? `, ${getIPAddress.location.postalCode}` : ""}`;
-      value_timezone.innerHTML = `UTC ${getIPAddress.location.timezone}`;
-      value_isp.innerHTML = getIPAddress.isp;
+      setIPAddressResult(getIPAddress);
       updateMarker(getIPAddress.location.lat, getIPAddress.location.lng);
+      updateParentIPAddressResultHeight();
     }
 
     if (recognizeInputType.type === "domain") {
@@ -239,11 +236,9 @@ const initialLng = -0.09;
       const getIPAddress = await fetch(urlWithDomains).then((response) =>
         response.json(),
       );
-      value_ipAddress.innerHTML = getIPAddress.ip;
-      value_location.innerHTML = `${getIPAddress.location.city}, ${getIPAddress.location.region}${getIPAddress.location.postalCode !== "" ? `, ${getIPAddress.location.postalCode}` : ""}`;
-      value_timezone.innerHTML = `UTC ${getIPAddress.location.timezone}`;
-      value_isp.innerHTML = getIPAddress.isp;
+      setIPAddressResult(getIPAddress);
       updateMarker(getIPAddress.location.lat, getIPAddress.location.lng);
+      updateParentIPAddressResultHeight();
     }
   }
 
@@ -264,16 +259,32 @@ const initialLng = -0.09;
   const value_timezone = document.getElementById("value_timezone");
   const value_isp = document.getElementById("value_isp");
 
+  function setIPAddressResult(data) {
+    let location = [];
+
+    if (data.location.city !== "") {
+      location.push(data.location.city);
+    }
+    if (data.location.region !== "") {
+      location.push(data.location.region);
+    }
+    if (data.location.postalCode !== "") {
+      location.push(data.location.postalCode);
+    }
+
+    value_ipAddress.innerHTML = data.ip;
+    value_location.innerHTML = location.join(", ");
+    value_timezone.innerHTML = `UTC ${data.location.timezone}`;
+    value_isp.innerHTML = data.isp;
+  }
+
   async function initializeIpAddress() {
     const initialUrl = `https://geo.ipify.org/api/v2/country,city?apiKey=at_E5WXh6XsUoPixXWDUh8HwXA7UTzLN`;
     const data = await fetch(initialUrl).then((response) => response.json());
 
-    value_ipAddress.innerHTML = data.ip;
-    value_location.innerHTML = `${data.location.city}, ${data.location.region}${data.location.postalCode !== "" ? `, ${data.location.postalCode}` : ""}`;
-    value_timezone.innerHTML = `UTC ${data.location.timezone}`;
-    value_isp.innerHTML = data.isp;
-
+    setIPAddressResult(data);
     updateMarker(data.location.lat, data.location.lng);
+    updateParentIPAddressResultHeight();
   }
 
   window.addEventListener("load", async () => {
