@@ -65,6 +65,14 @@ const projects: Project[] = [
     image: "/cover.png",
     difficulty: 3,
   },
+  {
+    project_url: "/results-summary-component",
+    frontendmentor_url:
+      "https://www.frontendmentor.io/challenges/results-summary-component-CE_K6s0maV",
+    name: "Results summary component",
+    image: "/cover.png",
+    difficulty: 1,
+  },
 ];
 
 export default projects;

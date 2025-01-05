@@ -1,0 +1,125 @@
+---
+import ProjectLayout from "~/components/layouts/ProjectLayout.astro";
+
+import IconMemory from "~/assets/challenge/results-summary-component/icon-memory.svg";
+import IconReaction from "~/assets/challenge/results-summary-component/icon-reaction.svg";
+import IconVerbal from "~/assets/challenge/results-summary-component/icon-verbal.svg";
+import IconVisual from "~/assets/challenge/results-summary-component/icon-visual.svg";
+
+const projectDir = "/challenge/results-summary-component";
+---
+
+<ProjectLayout
+  title="Results Summary Component"
+  image={projectDir + "/cover.png"}
+  url={projectDir}
+>
+  <main
+    class="relative bg-white w-svw md:flex md:items-center md:justify-center md:h-svh font-hanken-grotesk"
+  >
+    <div
+      id="component"
+      class="w-svw h-svh md:w-max md:h-max md:mx-auto my-auto rounded-none md:rounded-3xl flex flex-col md:grid md:grid-cols-2 md:auto-rows-fr shadow-2xl"
+    >
+      <div
+        id="result"
+        class="bg-gradient-to-br from-[hsl(252,100%,67%)] to-[hsl(241,81%,54%)] flex flex-col items-center gap-6 rounded-b-3xl md:rounded-3xl py-6 px-12"
+      >
+        <h1 class="text-[hsl(241,100%,89%)] text-sm md:text-lg font-medium">
+          Your Result
+        </h1>
+        <div
+          class="relative w-32 md:w-40 aspect-square rounded-full bg-gradient-to-b from-[hsla(256,72%,46%,1)] to-[hsla(241,72%,46%,0)]"
+        >
+          <div
+            class="absolute inset-0 flex flex-col items-center justify-center"
+          >
+            <div class="text-white text-5xl md:text-6xl font-extrabold">76</div>
+            <span
+              class="text-xs md:text-sm font-medium text-[hsl(241,100%,89%)]"
+              >of 100</span
+            >
+          </div>
+        </div>
+        <div class="flex flex-col gap-3 text-center items-center">
+          <h2 class="font-bold text-white text-lg md:text-2xl">Great</h2>
+          <p class="text-[hsl(241,100%,89%)] text-center leading-5 md:w-56">
+            You scored higher than 65% of the people who have taken these tests.
+          </p>
+        </div>
+      </div>
+      <div id="summary" class="p-6 flex flex-col gap-6">
+        <h1 class="text-[hsl(224,30%,27%)] font-bold text-xl">Summary</h1>
+        <div class="flex flex-col gap-3">
+          <div
+            class="flex items-center justify-between bg-[hsla(0,100%,67%,0.1)] p-3 rounded-lg"
+          >
+            <div class="flex items-center gap-3">
+              <img src={IconReaction.src} alt="reaction" />
+              <h3 class="text-[hsl(0,100%,67%)] font-bold text-lg">Reaction</h3>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="font-bold">80</span>
+              <span class="font-medium text-[hsl(224,30%,27%)]">/</span>
+              <span class="font-medium text-[hsl(224,30%,27%)]">100</span>
+            </div>
+          </div>
+
+          <div
+            class="flex items-center justify-between bg-[hsla(39,100%,56%,0.1)] p-3 rounded-lg"
+          >
+            <div class="flex items-center gap-3">
+              <img src={IconMemory.src} alt="memory" />
+              <h3 class="text-[hsl(39,100%,56%)] font-bold text-lg">Memory</h3>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="font-bold">92</span>
+              <span class="font-medium text-[hsl(224,30%,27%)]">/</span>
+              <span class="font-medium text-[hsl(224,30%,27%)]">100</span>
+            </div>
+          </div>
+
+          <div
+            class="flex items-center justify-between bg-[hsla(166,100%,37%,0.1)] p-3 rounded-lg"
+          >
+            <div class="flex items-center gap-3">
+              <img src={IconVerbal.src} alt="verbal" />
+              <h3 class="text-[hsl(166,100%,37%)] font-bold text-lg">Verbal</h3>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="font-bold">61</span>
+              <span class="font-medium text-[hsl(224,30%,27%)]">/</span>
+              <span class="font-medium text-[hsl(224,30%,27%)]">100</span>
+            </div>
+          </div>
+
+          <div
+            class="flex items-center justify-between bg-[hsla(234,85%,45%,0.1)] p-3 rounded-lg"
+          >
+            <div class="flex items-center gap-3">
+              <img src={IconVisual.src} alt="visual" />
+              <h3 class="text-[hsl(234,85%,45%)] font-bold text-lg">Visual</h3>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="font-bold">72</span>
+              <span class="font-medium text-[hsl(224,30%,27%)]">/</span>
+              <span class="font-medium text-[hsl(224,30%,27%)]">100</span>
+            </div>
+          </div>
+        </div>
+        <button
+          class="text-white font-bold w-full bg-[hsl(224,30%,27%)] py-2 rounded-full"
+          >Continue</button
+        >
+      </div>
+    </div>
+  </main>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap");
+
+    .font-hanken-grotesk {
+      font-family: "Hanken Grotesk", serif;
+    }
+  </style>
+</ProjectLayout>
