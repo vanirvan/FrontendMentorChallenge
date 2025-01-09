@@ -73,6 +73,14 @@ const projects: Project[] = [
     image: "/cover.png",
     difficulty: 1,
   },
+  {
+    project_url: "/conference-ticket-generator",
+    frontendmentor_url:
+      "https://www.frontendmentor.io/challenges/conference-ticket-generator-oq5gFIU12w",
+    name: "Conference ticket generator",
+    image: "/cover.png",
+    difficulty: 2,
+  },
 ];
 
 export default projects;

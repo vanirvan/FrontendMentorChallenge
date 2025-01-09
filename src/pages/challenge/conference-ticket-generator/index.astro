@@ -1,0 +1,14 @@
+---
+import ProjectLayout from "~/components/layouts/ProjectLayout.astro";
+import Page from "./page";
+
+const projectDir = "/challenge/conference-ticket-generator";
+---
+
+<ProjectLayout
+  title="Conference ticket generator"
+  image={projectDir + "/cover.png"}
+  url={projectDir}
+>
+  <Page client:load />
+</ProjectLayout>
