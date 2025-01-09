@@ -154,29 +154,38 @@ export default function Page() {
       >
         <img
           src={PatternLines.src}
+          alt="Pattern Lines"
           className="absolute left-0 top-0 h-full w-full object-cover"
         />
         <img
           src={PatternCircle.src}
+          alt="Pattern Circle"
           className="absolute left-0 top-0 h-auto w-32 -translate-x-6 -translate-y-16 object-cover md:translate-x-3"
         />
         <img
           src={PatternCircle.src}
+          alt="Pattern Circle"
           className="absolute left-2/3 top-1/2 h-auto w-44 -translate-x-6 translate-y-12 object-cover"
         />
         <img
           src={PatternSquigglyLineTop.src}
+          alt="Pattern Squiggly Line Top"
           className="absolute right-0 top-6 aspect-[112/50] w-[112px] object-cover md:w-[232px] xl:w-[446px]"
         />
         <img
           src={PatternSquigglyLineBottom.src}
+          alt="Pattern Squiggly Line Bottom"
           className="absolute bottom-0 left-0 h-auto w-4/5 object-contain md:w-3/5 xl:w-1/2"
         />
       </div>
 
       <div className="flex flex-col items-center justify-center gap-9 px-3 py-6 pb-28">
         <div className="flex items-center justify-center gap-3">
-          <img src={LogoFull.src} className="h-auto w-40 md:w-48" />
+          <img
+            src={LogoFull.src}
+            alt="Logo Full"
+            className="h-auto w-40 md:w-48"
+          />
         </div>
         {!formFinish ? (
           <h1 className="text-center text-3xl font-extrabold text-white md:text-5xl xl:max-w-2xl">
@@ -229,22 +238,23 @@ export default function Page() {
                 >
                   {avatarPreview === "" ? (
                     <>
-                      <div className="relative aspect-square h-auto w-16 rounded-md bg-white/10">
+                      <span className="relative aspect-square h-auto w-16 rounded-md bg-white/10">
                         <IconUpload className="absolute left-1/2 top-1/2 aspect-square w-8 -translate-x-1/2 -translate-y-1/2" />
-                      </div>
+                      </span>
                       <span className="text-center text-lg tracking-wide text-[hsl(252,6%,83%)]">
                         Drag and drop or click to upload
                       </span>
                     </>
                   ) : (
                     <>
-                      <div className="relative aspect-square h-auto w-16 rounded-md bg-white/10">
+                      <span className="relative aspect-square h-auto w-16 rounded-md bg-white/10">
                         <img
                           src={avatarPreview}
+                          alt="Avatar"
                           className="absolute left-1/2 top-1/2 aspect-square w-16 -translate-x-1/2 -translate-y-1/2 rounded-md border-2 border-[hsl(245,15%,58%)] object-cover"
                         />
-                      </div>
-                      <div className="z-10 flex items-center gap-3">
+                      </span>
+                      <span className="z-10 flex items-center gap-3">
                         <button
                           onClick={() => setAvatarPreview("")}
                           className="group cursor-pointer rounded-md bg-white/20 px-2 py-1 text-sm font-thin text-white hover:bg-white/25"
@@ -261,7 +271,7 @@ export default function Page() {
                             Change Image
                           </span>
                         </label>
-                      </div>
+                      </span>
                     </>
                   )}
                 </label>
