@@ -1,0 +1,14 @@
+---
+import ProjectLayout from "~/components/layouts/ProjectLayout.astro";
+import IndexPage from "./page";
+
+const projectDir = "/challenge/rock-paper-scrissors";
+---
+
+<ProjectLayout
+  title="Rock Paper Scrissors"
+  image={projectDir + "/cover.png"}
+  url={projectDir}
+>
+  <IndexPage client:load />
+</ProjectLayout>

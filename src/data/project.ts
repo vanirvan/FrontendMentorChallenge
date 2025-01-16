@@ -81,6 +81,14 @@ const projects: Project[] = [
     image: "/cover.png",
     difficulty: 2,
   },
+  {
+    project_url: "/rock-paper-scissors",
+    frontendmentor_url:
+      "https://www.frontendmentor.io/challenges/rock-paper-scissors-game-pTgwgvgH",
+    name: "Rock, Paper, Scissors game",
+    image: "/cover.png",
+    difficulty: 4,
+  },
 ];
 
 export default projects;
