@@ -89,6 +89,14 @@ const projects: Project[] = [
     image: "/cover.png",
     difficulty: 4,
   },
+  {
+    project_url: "/rest-countries-api-with-color-theme-switcher",
+    frontendmentor_url:
+      "https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca",
+    name: "REST Countries API with color theme switcher",
+    image: "/cover.png",
+    difficulty: 4,
+  },
 ];
 
 export default projects;
