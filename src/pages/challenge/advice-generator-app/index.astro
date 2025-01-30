@@ -1,0 +1,117 @@
+---
+import ProjectLayout from "~/components/layouts/ProjectLayout.astro";
+
+const projectDir = "/challenge/advice-generator-app";
+
+import IconDice from "~/assets/challenge/advice-generator-app/icon-dice.svg";
+import PatternDividerDesktop from "~/assets/challenge/advice-generator-app/pattern-divider-desktop.svg";
+import PatternDividerMobile from "~/assets/challenge/advice-generator-app/pattern-divider-mobile.svg";
+
+// initial fetch content
+const initialFetchAdvice = await fetch("https://api.adviceslip.com/advice");
+const initialData: {
+  slip: { id: number; advice: string };
+} = await initialFetchAdvice.json();
+
+const advice_id = initialData.slip.id;
+const advice = initialData.slip.advice;
+---
+
+<ProjectLayout
+  title="Advice Generator App"
+  image={projectDir + "/cover.png"}
+  url={projectDir}
+>
+  <main
+    class="w-full min-h-svh bg-[hsl(218,23%,16%)] font-manrope flex flex-col items-center justify-center p-3"
+  >
+    <!-- advice card -->
+    <div
+      class="relative mx-auto w-full max-w-lg rounded-md bg-[hsl(217,19%,24%)] flex flex-col gap-6 p-6 pb-16 items-center"
+    >
+      <h1
+        id="advice-id"
+        class="font-bold text-sm text-[hsl(150,100%,66%)] inline tracking-[0.2em]"
+      >
+        ADVICE #{advice_id}
+      </h1>
+      <h2
+        id="advice"
+        class="text-[28px] font-extrabold text-[hsl(193,38%,86%)] text-center"
+      >
+        "{advice}"
+      </h2>
+      <img
+        src={PatternDividerMobile.src}
+        alt="pattern divider"
+        class="inline md:hidden"
+      />
+      <img
+        src={PatternDividerDesktop.src}
+        alt="pattern divider"
+        class="hidden md:inline"
+      />
+      <div
+        id="shuffle-button"
+        class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"
+      >
+        <div
+          class="size-16 rounded-full relative bg-[hsl(150,100%,66%)] cursor-pointer custom-shadow"
+        >
+          <img
+            src={IconDice.src}
+            alt="icon dice"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          />
+        </div>
+      </div>
+    </div>
+  </main>
+</ProjectLayout>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+  .font-manrope {
+    font-family: "Manrope", serif;
+  }
+
+  .custom-shadow:hover {
+    box-shadow: 0 0 25px hsl(150, 100%, 66%);
+    transition: all 0.2s ease-in-out;
+  }
+</style>
+
+<script>
+  async function getAdvice(): Promise<{
+    slip: { id: number; advice: string };
+  }> {
+    return await fetch("https://api.adviceslip.com/advice").then((res) =>
+      res.json(),
+    );
+  }
+
+  function setContent(id: number, content: string) {
+    const ElementAdviceId = document.getElementById("advice-id");
+    const ElementAdvice = document.getElementById("advice");
+
+    if (ElementAdviceId) {
+      ElementAdviceId.innerHTML = `ADVICE #${id}`;
+    }
+
+    if (ElementAdvice) {
+      ElementAdvice.innerHTML = `"${content}"`;
+    }
+  }
+
+  async function shuffleAdvice() {
+    const advice = await getAdvice();
+    setContent(advice.slip.id, advice.slip.advice);
+  }
+
+  document
+    .getElementById("shuffle-button")
+    ?.addEventListener("click", async () => {
+      await shuffleAdvice();
+    });
+</script>

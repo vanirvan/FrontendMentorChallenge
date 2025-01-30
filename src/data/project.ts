@@ -97,6 +97,14 @@ const projects: Project[] = [
     image: "/cover.png",
     difficulty: 4,
   },
+  {
+    project_url: "/advice-generator-app",
+    frontendmentor_url:
+      "https://www.frontendmentor.io/challenges/advice-generator-app-QdUG-13db",
+    name: "Advice Generator App",
+    image: "/cover.png",
+    difficulty: 2,
+  },
 ];
 
 export default projects;
