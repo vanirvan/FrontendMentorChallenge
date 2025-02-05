@@ -105,6 +105,14 @@ const projects: Project[] = [
     image: "/cover.png",
     difficulty: 2,
   },
+  {
+    project_url: "/url-shortening-api-landing-page",
+    frontendmentor_url:
+      "https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G",
+    name: "URL shortening API landing page",
+    image: "/cover.png",
+    difficulty: 3,
+  },
 ];
 
 export default projects;
