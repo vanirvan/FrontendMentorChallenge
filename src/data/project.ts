@@ -113,6 +113,14 @@ const projects: Project[] = [
     image: "/cover.png",
     difficulty: 3,
   },
+  {
+    project_url: "/launch-countdown-timer",
+    frontendmentor_url:
+      "https://www.frontendmentor.io/challenges/launch-countdown-timer-N0XkGfyz-",
+    name: "Launch countdown timer",
+    image: "/cover.png",
+    difficulty: 3,
+  },
 ];
 
 export default projects;

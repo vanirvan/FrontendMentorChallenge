@@ -1,0 +1,32 @@
+---
+interface Props {
+  text: string;
+  number: string;
+  id?: string;
+}
+
+const { text, number, id } = Astro.props;
+---
+
+<div class="flex flex-col items-center gap-6">
+  <div
+    class="relative size-36 rounded-xl shadow-black shadow-md flex flex-col overflow-hidden"
+  >
+    <div class="w-18 aspect-[2/1] bg-[hsl(240,21%,22%)]"></div>
+    <div class="w-18 aspect-[2/1] bg-[hsl(236,21%,26%)]"></div>
+    <div
+      class="rounded-full size-4 bg-[hsl(240,15%,11%)] absolute top-1/2 -translate-x-1/2 -translate-y-1/2"
+    >
+    </div>
+    <div
+      class="rounded-full size-4 bg-[hsl(240,15%,11%)] absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2"
+    >
+    </div>
+    <span
+      id={id}
+      class="text-[hsl(345,95%,68%)] text-7xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      >{number}</span
+    >
+  </div>
+  <span class="uppercase text-[hsl(244,14%,58%)] tracking-[0.3em]">{text}</span>
+</div>
