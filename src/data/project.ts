@@ -121,6 +121,14 @@ const projects: Project[] = [
     image: "/cover.png",
     difficulty: 3,
   },
+  {
+    project_url: "/calculator-app",
+    frontendmentor_url:
+      "https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29",
+    name: "Calculator App",
+    image: "/cover.png",
+    difficulty: 3,
+  },
 ];
 
 export default projects;
