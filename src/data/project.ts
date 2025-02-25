@@ -129,6 +129,14 @@ const projects: Project[] = [
     image: "/cover.png",
     difficulty: 3,
   },
+  {
+    project_url: "/todo-app",
+    frontendmentor_url:
+      "https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW",
+    name: "Todo App",
+    image: "/cover.png",
+    difficulty: 3,
+  },
 ];
 
 export default projects;

@@ -14,6 +14,7 @@ export default defineConfig({
     "/challenge/rest-countries-api-with-color-theme-switcher":
       "https://fmc-rest-countries-api-with-color-theme-switcher.pages.dev/",
     "/challenge/calculator-app": "https://fmc-calculator-app.pages.dev/",
+    "/challenge/todo-app": "https://fmc-todo-app.pages.dev/",
   },
   integrations: [tailwind(), react()],
 });
