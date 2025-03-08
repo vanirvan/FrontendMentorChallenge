@@ -5,9 +5,10 @@ interface Props {
   title?: string;
   image?: string;
   url?: string;
+  bodyClass?: string;
 }
 
-const { title, image, url } = Astro.props;
+const { title, image, url, bodyClass } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,7 +22,7 @@ const { title, image, url } = Astro.props;
     />
     <slot name="header" />
   </head>
-  <body>
+  <body class={bodyClass}>
     <slot />
   </body>
 </html>
