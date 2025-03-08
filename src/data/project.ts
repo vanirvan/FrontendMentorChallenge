@@ -137,6 +137,14 @@ const projects: Project[] = [
     image: "/cover.png",
     difficulty: 3,
   },
+  {
+    project_url: "/tip-calculator-app",
+    frontendmentor_url:
+      "https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX",
+    name: "Tip calculator app",
+    image: "/cover.png",
+    difficulty: 2,
+  },
 ];
 
 export default projects;

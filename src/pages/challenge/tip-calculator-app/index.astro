@@ -1,0 +1,26 @@
+---
+import "./index.css";
+
+import ProjectLayout from "~/components/layouts/ProjectLayout.astro";
+
+import { Image } from "astro:assets";
+import Logo from "~/assets/challenge/tip-calculator-app/logo.svg";
+
+import CalculatorCard from "./calculator-card";
+
+const projectDir = "/challenge/tip-calculator-app";
+---
+
+<ProjectLayout
+  title="Tip Calculator App"
+  image={projectDir + "/cover.png"}
+  url={projectDir}
+  bodyClass="relative font-bold font-space-mono bg-[hsl(185,41%,84%)] w-full h-full min-h-svh flex flex-col items-center justify-center gap-12"
+>
+  <Image src={Logo} alt="Logo" class={"mt-12 w-16"} />
+  <div
+    class="w-full h-full p-6 grid grid-cols-1 md:grid-cols-2 rounded-t-3xl md:rounded-3xl gap-6 bg-white md:flex-none md:max-w-3xl"
+  >
+    <CalculatorCard client:load />
+  </div>
+</ProjectLayout>
