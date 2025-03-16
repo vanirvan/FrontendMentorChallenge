@@ -1,0 +1,217 @@
+---
+import ProjectLayout from "~/components/layouts/ProjectLayout.astro";
+
+const projectDir = "/challenge/news-homepage";
+
+// assets
+import { Image } from "astro:assets";
+
+import Logo from "~/assets/challenge/news-homepage/logo.svg";
+import ImgGamingGrowth from "~/assets/challenge/news-homepage/image-gaming-growth.jpg";
+import ImgRetroPcs from "~/assets/challenge/news-homepage/image-retro-pcs.jpg";
+import ImgTopLaptops from "~/assets/challenge/news-homepage/image-top-laptops.jpg";
+import ImgWeb3Desktop from "~/assets/challenge/news-homepage/image-web-3-desktop.jpg";
+import ImgWeb3Mobile from "~/assets/challenge/news-homepage/image-web-3-mobile.jpg";
+
+// components
+import MobileSidebar from "./MobileSidebar";
+---
+
+<ProjectLayout
+  title="QR Code Component"
+  image={projectDir + "/cover.png"}
+  url={projectDir}
+  bodyClass="relative"
+>
+  <nav
+    class="relative flex items-center justify-between px-3 pt-6 max-w-5xl mx-auto"
+  >
+    <Image src={Logo} alt="Logo" class="h-8 w-auto" />
+    <div class="items-center justify-center gap-9 hidden md:flex">
+      <a
+        href="#"
+        class="text-sm font-medium text-gray-500 transition-colors hover:text-[hsl(5,85%,63%)]"
+      >
+        Home
+      </a>
+      <a
+        href="#"
+        class="text-sm font-medium text-gray-500 transition-colors hover:text-[hsl(5,85%,63%)]"
+      >
+        New
+      </a>
+      <a
+        href="#"
+        class="text-sm font-medium text-gray-500 transition-colors hover:text-[hsl(5,85%,63%)]"
+      >
+        Popular
+      </a>
+      <a
+        href="#"
+        class="text-sm font-medium text-gray-500 transition-colors hover:text-[hsl(5,85%,63%)]"
+      >
+        Trending
+      </a>
+      <a
+        href="#"
+        class="text-sm font-medium text-gray-500 transition-colors hover:text-[hsl(5,85%,63%)]"
+      >
+        Categories
+      </a>
+    </div>
+    <MobileSidebar client:load />
+  </nav>
+  <section
+    id="hero"
+    class="relative grid grid-cols-1 md:grid-cols-3 gap-6 px-3 py-12 max-w-5xl mx-auto"
+  >
+    <div
+      id="first-article"
+      class="md:col-span-2 grid grid-cols-1 gap-3 md:grid-cols-2 relative"
+    >
+      <div class="relative md:col-span-2">
+        <Image
+          src={ImgWeb3Desktop}
+          alt={"Web3 Desktop"}
+          class="w-full h-auto hidden md:block"
+        />
+        <Image
+          src={ImgWeb3Mobile}
+          alt={"Web3 Mobile"}
+          class="w-full h-auto blockk md:hidden"
+        />
+      </div>
+      <h1 class="font-black text-5xl tracking-wide">
+        The Bright Future of Web 3.0?
+      </h1>
+      <div class="flex flex-col gap-6">
+        <span class="md:text-sm text-gray-500">
+          We dive into the next evolution of the web that claims to put the
+          power of the platform back into the hands of the people. But is it
+          really fulfilling its promise?</span
+        >
+        <button
+          class="px-9 py-3 w-max hover:text-[hsl(36,100%,99%)] tracking-widest font-bold text-black bg-[hsl(5,85%,63%)] hover:bg-[hsl(240,100%,5%)] transition-colors"
+          >READ MORE</button
+        >
+      </div>
+    </div>
+    <div
+      id="newest-article"
+      class="relative bg-[hsl(240,100%,5%)] px-4 py-6 justify-between flex flex-col"
+    >
+      <h1 class="text-[hsl(35,77%,62%)] text-4xl font-bold tracking-wider">
+        New
+      </h1>
+      <div class="flex flex-col gap-3">
+        <h2
+          class="font-bold text-[hsl(36,100%,99%)] capitalize hover:text-[hsl(35,77%,62%)] transition-colors cursor-pointer"
+        >
+          Hydrogen VS Electric Cars
+        </h2>
+        <span class="text-gray-500 text-sm">
+          Will hydrogen-fueled cars ever catch up to EVs?
+        </span>
+      </div>
+      <div class="w-full h-px bg-[hsl(236,13%,42%)]"></div>
+      <div class="flex flex-col gap-3">
+        <h2
+          class="font-bold text-[hsl(36,100%,99%)] capitalize hover:text-[hsl(35,77%,62%)] transition-colors cursor-pointer"
+        >
+          The downsider of AI Artistry
+        </h2>
+        <span class="text-gray-500 text-sm">
+          What are possible adverse effects of on-demand AI Image generation?
+        </span>
+      </div>
+      <div class="w-full h-px bg-[hsl(236,13%,42%)]"></div>
+      <div class="flex flex-col gap-3">
+        <h2
+          class="font-bold text-[hsl(36,100%,99%)] capitalize hover:text-[hsl(35,77%,62%)] transition-colors cursor-pointer"
+        >
+          Is VC Funding Drying Up
+        </h2>
+        <span class="text-gray-500 text-sm">
+          Private funding by VC firm is down 50% YOY. We take a look at what
+          that means.
+        </span>
+      </div>
+    </div>
+
+    <div class="flex gap-6 mt-10">
+      <Image
+        src={ImgRetroPcs}
+        alt={"Reviving Retro PCs"}
+        class="w-auto object-cover h-28"
+      />
+      <div class="flex flex-col gap-2">
+        <h1 class="font-bold text-3xl text-[hsl(5,85%,63%)] tracking-wider">
+          01
+        </h1>
+        <h2
+          class="font-bold text-xl text-black cursor-pointer hover:text-[hsl(5,85%,63%)] transition-colors"
+        >
+          Reviving Retro PCs
+        </h2>
+        <span class="text-[hsl(236,13%,42%)] text-sm"
+          >What happens when old PCs are given modern upgrades?</span
+        >
+      </div>
+    </div>
+    <div class="flex gap-6 mt-10">
+      <Image
+        src={ImgTopLaptops}
+        alt={"Top 10 Laptops of 2022"}
+        class="w-auto object-cover h-28"
+      />
+      <div class="flex flex-col gap-2">
+        <h1 class="font-bold text-3xl text-[hsl(5,85%,63%)] tracking-wider">
+          02
+        </h1>
+        <h2
+          class="font-bold text-xl text-black cursor-pointer hover:text-[hsl(5,85%,63%)] transition-colors"
+        >
+          Top 10 Laptops of 2022
+        </h2>
+        <span class="text-[hsl(236,13%,42%)] text-sm"
+          >Our best picks for various needs and budgets.</span
+        >
+      </div>
+    </div>
+    <div class="flex gap-6 mt-10">
+      <Image
+        src={ImgGamingGrowth}
+        alt={"The Growth of Gaming"}
+        class="w-auto object-cover h-28"
+      />
+      <div class="flex flex-col gap-2">
+        <h1 class="font-bold text-3xl text-[hsl(5,85%,63%)] tracking-wider">
+          03
+        </h1>
+        <h2
+          class="font-bold text-xl text-black cursor-pointer hover:text-[hsl(5,85%,63%)] transition-colors"
+        >
+          The Growth of Gaming
+        </h2>
+        <span class="text-[hsl(236,13%,42%)] text-sm"
+          >How the pandemic has sparked fresh oportunities.</span
+        >
+      </div>
+    </div>
+  </section>
+</ProjectLayout>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+  body {
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+
+    min-width: 100%;
+    min-height: 100svh;
+
+    background-color: hsl(36, 100%, 99%);
+    overflow-x: hidden;
+  }
+</style>

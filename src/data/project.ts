@@ -145,6 +145,14 @@ const projects: Project[] = [
     image: "/cover.png",
     difficulty: 2,
   },
+  {
+    project_url: "/news-homepage",
+    frontendmentor_url:
+      "https://www.frontendmentor.io/challenges/news-homepage-H6SWTa1MFl",
+    name: "News Homepage",
+    image: "/cover.png",
+    difficulty: 2,
+  },
 ];
 
 export default projects;
